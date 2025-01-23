@@ -15,9 +15,6 @@ Supabase: Handles real-time features, including status updates and media storage
 Tech Stack:
 Frontend: Flutter (Dart) for building a responsive and interactive mobile app interface.
 Backend: Firebase for storage, authentication, and real-time database management, Supabase for extended real-time capabilities.
-Installation:
-Clone the repository:
-git clone https://github.com/yourusername/sabaire-app.git
 
 Navigate into the project directory:
 cd sabaire-app
