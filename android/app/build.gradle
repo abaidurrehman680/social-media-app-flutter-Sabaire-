@@ -1,0 +1,66 @@
+plugins {
+    id "com.android.application"
+    id "kotlin-android"
+    // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
+    id "dev.flutter.flutter-gradle-plugin"
+}
+
+android {
+    namespace = "com.example.social"
+    compileSdk = flutter.compileSdkVersion
+    ndkVersion = flutter.ndkVersion
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = "1.8" // Set JVM target explicitly as a string
+    }
+
+    defaultConfig {
+        // Specify your unique Application ID
+        applicationId = "com.example.social"
+        minSdk = flutter.minSdkVersion
+        targetSdk = flutter.targetSdkVersion
+        versionCode = flutter.versionCode
+        versionName = flutter.versionName
+        minSdkVersion 23
+    }
+
+    buildTypes {
+        release {
+            // Enable resource and code shrinking only for release builds
+            shrinkResources true
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+
+        debug {
+            // Disable resource and code shrinking for debug builds
+            shrinkResources false
+            minifyEnabled false
+        }
+    }
+
+}
+
+dependencies {
+    // Firebase BOM for version management
+    implementation platform('com.google.firebase:firebase-bom:32.0.0') // Firebase BOM ensures consistent versions
+
+    // Add Firebase dependencies
+    implementation 'com.google.firebase:firebase-auth'
+    implementation 'com.google.firebase:firebase-firestore' // Example: Add Firestore if needed
+
+    // Add Kotlin standard library (explicit version for consistency)
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:1.9.0"
+}
+
+flutter {
+    source = "../.."
+}
+
+// Apply the Firebase plugin at the bottom of the file
+apply plugin: 'com.google.gms.google-services'
